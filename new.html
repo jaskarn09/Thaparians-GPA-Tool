@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up & Log In</title>
+  <link rel="stylesheet" href="new.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="https://i.postimg.cc/WzFYf90f/464923851-8336031936495065-8618513628620415409-n.png" alt="Logo" class="logo-img" />
+      <div class="logo-text">Thaparians!!</div>
+    </div>
+
+    <nav>
+      <a href="#">SGPA Calculator</a>
+      <a href="#">GPA Calculator</a>
+      <a href="#">Attendance Manager</a>
+      <a href="#">CGPA Predictor</a>
+    </nav>
+
+    <div class="auth-buttons">
+      <button onclick="showForm('signup')">Sign Up</button>
+      <button onclick="showForm('login')">Log In</button>
+    </div>
+  </header>
+
+  <!-- Forms -->
+  <div class="form-area" id="form-area" style="display: none;">
+    <div class="container" id="signup-container">
+      <h2>Sign Up</h2>
+      <input type="text" placeholder="Username" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button class="btn">Sign Up</button>
+      <div class="switch">
+        Already have an account? <a href="#" onclick="toggleForm()">Log In</a>
+      </div>
+    </div>
+
+    <div class="container" id="login-container" style="display: none;">
+      <h2>Log In</h2>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button class="btn">Log In</button>
+      <div class="switch">
+        Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-text">
+    <p>Heyy.!</p>
+    <p>I’ll help u in calculating<br><span class="bold-gpa">your Gpa !!</span></p>
+  </div>
+  <div class="hero-img">
+    <img src="https://i.postimg.cc/tCts1wbV/3749212.jpg" alt="Hero illustration">
+  </div>
+</section>
+
+<!-- ✈️ Plane Animation Path -->
+<div class="plane-wrapper">
+  <svg class="plane-animation" viewBox="0 0 1000 400">
+    <path id="planePath" class="planePath"
+      d="M-250,10 
+      C60,10 20,13 21,18 
+      C250,250 280,260 300,250 
+      C340,210 300,180 260,160 
+      C230,150 200,180 240,500" />
+
+    <g id="plane" transform="scale(0.3)">
+      <polygon class="fil1" points="-141,-10 199,0 -198,-72 -188,-61 -171,-57 -184,-57"/>
+      <polygon class="fil2" points="199,0 -141,-10 -163,63 -123,9"/>
+      <polygon class="fil3" points="-95,39 -113,32 -123,9 -163,63 -105,53 -108,45 -87,48 -90,45 -103,41 -94,41"/>
+      <path class="fil4" d="M-87 48l-21 -3 3 8 19 -4 -1 -1zm-26 -16l18 7 -2 -1 32 -7 -29 1 11 -4 -24 -1 -16 -18 10 23zm10 9l13 4 -4 -4 -9 0z"/>
+      <polygon class="fil1" points="-83,28 -94,32 -65,31 -97,38 -86,49 -67,70 199,0 -123,9 -107,27"/>
+    </g>
+
+    <animateMotion xlink:href="#plane" dur="6s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#planePath" />
+    </animateMotion>
+  </svg>
+</div>
+
+
+<!-- Branch Selection -->
+<div class="branch-select">
+  <span class="label">Select ur branch---></span>
+  <select>
+    <option value="select">SELECT</option>
+    <option value="eec">EEC</option>
+    <option value="cse">CSE</option>
+    <option value="mech">Mechanical</option>
+    <option value="coe">COE</option>
+    <option value="mechatronics">Mechatronics</option>
+    <option value="biomedical">BioMedical</option>
+    <option value="enc">ENC</option>
+    <option value="ece">ECE</option>
+    <option value="civil">CIVIL</option>
+    <option value="civilwithcomp">CIVIL&COMPUTER</option>
+    <option value="elec">ELECTRICAL</option>
+    <option value="eic">EIC</option>
+    <option value="chemical">CHEMICAL</option>
+    <option value="biotechno">BIOTECHNOLOGY</option>
+    <option value="csbs">CSBS</option>
+    <option value="aiml">AI&ML</option>
+    <option value="Vlsi_design">VLSI_Design</option>
+    <!-- Add more branches as needed -->
+  </select>
+</div>
+
+
+  <script src="new.js"></script>
+</body>
+</html>

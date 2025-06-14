@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thaparians | GPA Tools</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="calculator.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="https://i.postimg.cc/WzFYf90f/464923851-8336031936495065-8618513628620415409-n.png" width="50px" alt="Logo" class="logo-img" />
+    </div>
+    <div class="logo-text">Thaparians!!</div>
+    <nav>
+      <a href="#">SGPA Calculator</a>
+      <a href="#">GPA Calculator</a>
+      <a href="#">Attendance Manager</a>
+      <a href="#">CGPA Predictor</a>
+    </nav>
+    <div class="auth-buttons">
+      <button>Sign Up</button>
+      <button>Log In</button>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hi there!</h1>
+      <p>I'll help you in computing your <span>Grades!</span></p>
+    </div>
+    <div class="hero-images">
+      <img src="https://i.postimg.cc/jSy7wy71/intro1.webp" width="500px" alt="Image 1" class="hero-image-left" />
+      <img src="https://i.postimg.cc/3rvhX1tn/intro2.webp" width="500px" alt="Image 2" class="hero-image-right" />
+    </div>
+  </section>
+
+  <!-- Branch Selection Section -->
+  <section id="branch-selection" class="box-section">
+    <label for="branch-select">Select Branch:</label>
+    <!-- The onchange event will trigger the view switch -->
+    <select id="branch-select" onchange="handleBranchSelection(this.value)">
+      <option value="select">SELECT</option>
+      <option value="eec">EEC</option>
+      <option value="cse">CSE</option>
+      <option value="mech">Mechanical</option>
+      <option value="coe">COE</option>
+      <option value="mechatronics">Mechatronics</option>
+      <option value="biomedical">BioMedical</option>
+      <option value="enc">ENC</option>
+      <option value="ece">ECE</option>
+      <option value="civil">CIVIL</option>
+      <option value="civilwithcomp">CIVIL&COMPUTER</option>
+      <option value="elec">ELECTRICAL</option>
+      <option value="eic">EIC</option>
+      <option value="chemical">CHEMICAL</option>
+      <option value="biotechno">BIOTECHNOLOGY</option>
+      <option value="csbs">CSBS</option>
+      <option value="aiml">AI&ML</option>
+      <option value="Vlsi_design">VLSI_Design</option>
+    </select>
+  </section>
+
+  <!-- Main Content: Hidden until a branch is selected -->
+  <div id="main-content" style="display: none;">
+    <!-- Calculator Slider Section -->
+    <div id="calculator-slider">
+      <!-- Slide 1--SGPA Calculator -->
+      <div class="slide" id="slide-sgpa">
+        <section id="sgpa-calculator" class="box-section">
+          <div class="sgpa-header">
+            <h2 id="sgpa-text">CALCULATE SGPA here!!</h2>
+            <img src="https://i.postimg.cc/Jnmr6dPN/bookand-coffee.png" style="width:500px; height:400px;" alt="SGPA Image" class="sgpa-image" />
+          </div>
+          <button id="continue-btn-sgpa">Click to Continue</button>
+          <div class="calculator-container" id="sgpa-form-container" style="display: none;"></div>
+          <div id="sgpa-output"></div>
+        </section>
+      </div>
+      <!-- Slide 2--CGPA Calculator -->
+      <div class="slide" id="slide-cgpa">
+        <section id="cgpa-calculator" class="box-section">
+          <div class="sgpa-header">
+            <h2 id="cgpa-text">CALCULATE CGPA here!!!</h2>
+            <img src="https://i.postimg.cc/8cdTQ2fG/result-img.jpg" style="width:500px; height:400px;" alt="CGPA Image" class="cgpa-image" />
+          </div>
+          <button id="continue-btn-cgpa">Click to Continue</button>
+          <div class="calculator-container" id="cgpa-container" style="display: none;">
+            <h3>Course & Branch Selection</h3>
+            <form>
+              <label for="course-cgpa">Course:</label>
+              <input type="text" id="course-cgpa" placeholder="Enter Course" />
+              <label for="branch-cgpa">Branch:</label>
+              <input type="text" id="branch-cgpa" placeholder="Enter Branch" />
+              <button type="submit">Calculate CGPA</button>
+            </form>
+            <div id="cgpa-output"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- Slide 3 -- Attendance Manager -->
+<div class="slide" id="slide-attendance">
+  <section id="attendance-manager" class="box-section">
+    <div class="sgpa-header">
+      <h2 id="attendance-text">Attendance manager at ur service:)</h2>
+      <img src="https://img.freepik.com/free-vector/confirmed-attendance-concept-illustration_114360-30959.jpg"  style="width:500px; height:400px;" alt="Attendance Image" class="attendance-image" />
+    </div>
+    <button id="continue-btn-attendance">Click to Continue</button>
+    <div class="calculator-container" id="attendance-container" style="display: none;">
+      <h3>Track & Predict Attendance</h3>
+      <form>
+        <label for="total-classes">Total Classes:</label>
+        <input type="number" id="total-classes" placeholder="Enter total classes" />
+        <label for="attended-classes">Attended Classes:</label>
+        <input type="number" id="attended-classes" placeholder="Enter attended classes" />
+        <button type="button" onclick="calculateAttendance()">Calculate Attendance</button>
+      </form>
+      <div id="attendance-output"></div>
+    </div>
+  </section>
+</div>
+
+<!-- Slide 4 -- GPA Conversion -->
+<div class="slide" id="slide-gpa-conversion">
+  <section id="gpa-conversion" class="box-section">
+    <div class="sgpa-header">
+      <h2 id="gpa-text">GPA Calculator..!</h2>
+      <img src="https://img.freepik.com/free-vector/academic-excellence-illustration_24877-52355.jpg?ga=GA1.1.231457930.1731235639&semt=ais_hybrid"  style="width:500px; height:400px;" alt="GPA Conversion Image" class="gpa-image" />
+    </div>
+    <button id="continue-btn-gpa">Click to Continue</button>
+    <div class="calculator-container" id="gpa-container" style="display: none;">
+      <h3>CGPA/SGPA to GPA Converter</h3>
+      <form>
+        <label for="cgpa-input">Enter CGPA:</label>
+        <input type="number" step="0.01" id="cgpa-input" placeholder="Enter CGPA" />
+        <label for="sgpa-input">Enter SGPA:</label>
+        <input type="number" step="0.01" id="sgpa-input" placeholder="Enter SGPA (optional)" />
+        <button type="button" onclick="convertGPA()">Convert to GPA</button>
+      </form>
+      <div id="gpa-output"></div>
+    </div>
+  </section>
+</div>
+
+<!-- Left Arrow Button -->
+<button id="prev-slide" class="slider-btn">&#10094;</button>
+
+<!-- Right Arrow Button -->
+<button id="next-slide" class="slider-btn">&#10095;</button>
+
+    <!-- Add to Home Screen Section -->
+    <section id="add-to-home" class="box-section">
+      <h3>Add to Home Screen</h3>
+      <button>Add Now</button>
+    </section>
+
+<!-- Feedback Section -->
+<section id="feedback">
+  <div class="feedback-content">
+    <div class="feedback-text">
+      <h2>Reviews & Feedback</h2>
+      <p>Help us improve! Your feedback is highly appreciated.</p>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Your good name..." />
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Email Address" />
+        <label for="feedback">Feedback:</label>
+        <textarea id="story" name="story" rows="5" cols="33" placeholder="Your suggestions are valuable to us!"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <div class="feedback-images">
+      <div class="feedback-image">
+        <img src="https://i.postimg.cc/cLRvrtZ3/5348778-removebg-preview.png" width="350px" alt="Feedback Image" />
+      </div>
+      <div class="devices-image">
+        <img src="https://i.postimg.cc/vHGf7gd7/10359998-removebg-preview.png" width="350px" alt="Devices Image" />
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Personal Detail Section -->
+    <div class="personal-detail-section">
+      <!-- Left Column -->
+      <div class="footer-column left-column">
+        <img src="img/insta-pic.jpg" alt="Jaskaran Singh" class="profile-image">
+        <div class="personal-info">
+          <p class="designed-by">Designed by:</p>
+          <h4>Jaskaran Singh</h4>
+          <p class="education">ELECTRICAL AND COMPUTER ENGINEERING</p>
+          <p class="university">"TIET'26, Patiala. ©2023-26"</p>
+          <div class="contact-links">
+            <!-- LinkedIn with inline SVG -->
+            <a href="https://www.linkedin.com/in/jaskaran-singh-8a42ab2b1/" target="_blank" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="social-icon" width="22" height="22">
+                <path fill="#ffffff" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            
+            <!-- GitHub with inline SVG -->
+            <a href="https://github.com/jaskarn09" target="_blank" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="social-icon" width="22" height="22">
+                <path fill="#ffffff" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            
+            <!-- Email with inline SVG -->
+            <div class="email-container">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="email-icon" width="22" height="22">
+                <path fill="#ffffff" d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+              </svg>
+              <a href="mailto:jsingh51_be23@thapar.edu" class="email-text">jsingh51_be23@thapar.edu</a>
+            </div>
+          </div>
+          <p class="made-with">Made with <span class="heart">❤</span> to all <span class="thaparians">#THAPARians</span></p>
+        </div>
+      </div>
+      
+      <!-- Center Column -->
+      <div class="footer-column center-column">
+        <img src="https://i.postimg.cc/vZznSQGR/5500661-removebg-preview.png" alt="Logo" class="center-logo">
+      </div>
+      
+      <!-- Right Column -->
+      <div class="footer-column right-column">
+        <div class="compatibility">
+          <p>Compatible with<br>all devices. <span class="check-mark">✓</span></p>
+          <img src="https://i.postimg.cc/Gm5LpNQ8/4022190-removebg-preview.png" alt="Devices" class="devices-image">
+        </div>
+
+    <!-- Chevron Up Arrow SVG -->
+<div class="chevron-container">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="chevron-icon" width="24" height="24">
+    <rect x="0" y="0" width="24" height="24" fill="#2e2e4e" rx="4" ry="4"/>
+    <path fill="#ffffff" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+  </svg>
+</div>
+
+  <!-- Scripts -->
+  <script>
+    // When a branch is selected, hide branch selection and show main content
+    function handleBranchSelection(branchValue) {
+      if (branchValue && branchValue !== "select") {
+        document.getElementById("branch-selection").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      }
+    }
+  </script>
+  <script src="OOH.JS"></script>
+</body>
+</html>
