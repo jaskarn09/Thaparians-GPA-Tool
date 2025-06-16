@@ -13,7 +13,7 @@
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src="https://i.postimg.cc/WzFYf90f/464923851-8336031936495065-8618513628620415409-n.png" alt="Logo" class="logo-img" />
+      <img src="https://i.postimg.cc/PrRbZvCm/Untitled-design.png" alt="Logo" class="logo-img" />
       <div class="logo-text">Thaparians!!</div>
     </div>
 
@@ -94,7 +94,7 @@
 <!-- Branch Selection -->
 <div class="branch-select">
   <span class="label">Select ur branch---></span>
-  <select>
+  <select id="branchSelect" onchange="handleBranchSelection()">
     <option value="select">SELECT</option>
     <option value="eec">EEC</option>
     <option value="cse">CSE</option>
@@ -116,6 +116,16 @@
     <!-- Add more branches as needed -->
   </select>
 </div>
+
+<section id="gpa-section" class="hidden-section">
+  <h2>Welcome to your GPA Toolkit 🎓</h2>
+  <div class="gpa-slider">
+    <div class="card">SGPA Calculator<a href="/sgpa"><button>Start</button></a></div>
+    <div class="card">CGPA Calculator<a href="/cgpa"><button>Start</button></a></div>
+    <div class="card">Attendance Manager<a href="/attendance"><button>Start</button></a></div>
+    <div class="card">GPA Converter<a href="/gpa-converter"><button>Start</button></a></div>
+  </div>
+</section>
 
 
   <script src="script.js"></script>

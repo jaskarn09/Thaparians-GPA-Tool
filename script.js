@@ -28,3 +28,16 @@ function showForm(type) {
 
   formArea.scrollIntoView({ behavior: 'smooth' });
 }
+
+// ✅ Branch selection → localStorage + show slider
+const branchSelect = document.querySelector("select");
+const gpaSection = document.getElementById("gpa-section");
+
+branchSelect.addEventListener("change", () => {
+  const selectedBranch = branchSelect.value;
+  if (selectedBranch !== "select") {
+    localStorage.setItem("selectedBranch", selectedBranch);
+    gpaSection.classList.add("show-section");
+    gpaSection.scrollIntoView({ behavior: "smooth" });
+  }
+});
