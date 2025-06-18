@@ -1,31 +1,17 @@
 // src/App.jsx
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import Home from "./pages/Home";
-import SGPA from "./pages/SGPA";
-import CGPA from "./pages/CGPA";
-import GPAConverter from "./pages/GPAConverter";
-import Attendance from "./pages/Attendance";
 import { BranchProvider } from "./context/BranchContext";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <BranchProvider>
-      <Router>
-        <div style={{ padding: 20 }}>
-          <h1>Thaparian|GPA-Tool</h1>
-
-          {/* Routes */}
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/sgpa" element={<SGPA />} />
-            <Route path="/cgpa" element={<CGPA />} />
-            <Route path="/gpa-converter" element={<GPAConverter />} />
-            <Route path="/attendance" element={<Attendance />} />
-          </Routes>
-        </div>
-      </Router>
+      <div className="min-h-screen bg-gray-100 p-4">
+        <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
+          Thaparian | GPA Tool
+        </h1>
+        <Home />
+      </div>
     </BranchProvider>
   );
 }

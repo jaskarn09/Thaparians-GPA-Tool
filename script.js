@@ -29,15 +29,44 @@ function showForm(type) {
   formArea.scrollIntoView({ behavior: 'smooth' });
 }
 
-// ✅ Branch selection → localStorage + show slider
+// 🔥 NEW: Add the missing handleBranchSelection function
+function handleBranchSelection() {
+  const branchSelect = document.querySelector("select");
+  const selectedBranch = branchSelect.value;
+  
+  if (selectedBranch !== "select") {
+    localStorage.setItem("selectedBranch", selectedBranch);
+    const gpaSection = document.getElementById("gpa-section");
+    if (gpaSection) {
+      gpaSection.classList.add("show-section");
+      gpaSection.scrollIntoView({ behavior: "smooth" });
+    }
+    
+    // Trigger React context update
+    window.dispatchEvent(new CustomEvent('branchChanged', { 
+      detail: { branch: selectedBranch } 
+    }));
+  }
+}
+
+// ✅ Branch selection → localStorage + show slider + React compatibility
 const branchSelect = document.querySelector("select");
 const gpaSection = document.getElementById("gpa-section");
 
-branchSelect.addEventListener("change", () => {
-  const selectedBranch = branchSelect.value;
-  if (selectedBranch !== "select") {
-    localStorage.setItem("selectedBranch", selectedBranch);
-    gpaSection.classList.add("show-section");
-    gpaSection.scrollIntoView({ behavior: "smooth" });
-  }
-});
+if (branchSelect) {
+  branchSelect.addEventListener("change", () => {
+    const selectedBranch = branchSelect.value;
+    if (selectedBranch !== "select") {
+      localStorage.setItem("selectedBranch", selectedBranch);
+      if (gpaSection) {
+        gpaSection.classList.add("show-section");
+        gpaSection.scrollIntoView({ behavior: "smooth" });
+      }
+      
+      // 🔥 Trigger React context update
+      window.dispatchEvent(new CustomEvent('branchChanged', { 
+        detail: { branch: selectedBranch } 
+      }));
+    }
+  });
+}
